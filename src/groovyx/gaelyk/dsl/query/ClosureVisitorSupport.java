@@ -7,7 +7,7 @@ import org.codehaus.groovy.ast.stmt.*;
 import java.util.List;
 import org.codehaus.groovy.ast.CodeVisitorSupport;
 /**
- * 7777.66666.55555.4444.3333.1111.222
+ * 8888.7777.66666.55555.4444.3333.1111.222
  * The purpose of the class is to find a closure and define 
  * either that closure represents a "query DSL" or not.
  * When found than a registered object of type @{link VisitClosureHandler}
