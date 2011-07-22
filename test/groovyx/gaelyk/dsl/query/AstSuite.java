@@ -1,0 +1,34 @@
+package groovyx.gaelyk.dsl.query;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+
+/**
+ *
+ * @author V. Shyshkin
+ */
+@RunWith(Suite.class)
+@Suite.SuiteClasses({groovyx.gaelyk.dsl.query.DefaultExpressionConverterTest.class})
+public class AstSuite {
+
+    @BeforeClass
+    public static void setUpClass() throws Exception {
+    }
+
+    @AfterClass
+    public static void tearDownClass() throws Exception {
+    }
+
+    @Before
+    public void setUp() throws Exception {
+    }
+
+    @After
+    public void tearDown() throws Exception {
+    }
+    
+}

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+*** GENERATED FROM project.xml - DO NOT EDIT  ***
+***         EDIT ../build.xml INSTEAD         ***
+
+        
+        -->
+<project xmlns:j2seproject3="http://www.netbeans.org/ns/j2se-project/3" xmlns:j2seproject1="http://www.netbeans.org/ns/j2se-project/1" xmlns:jaxrpc="http://www.netbeans.org/ns/j2se-project/jax-rpc">
+    <target name="-groovy-init-macrodef-junit-addon">
+        <macrodef name="junit" uri="http://www.netbeans.org/ns/j2se-project/3">
+            <attribute name="includes" default="${includes}"/>
+            <attribute name="excludes" default="${excludes}"/>
+            <attribute name="testincludes" default="**"/>
+            <attribute name="processorpath" default="${javac.processorpath}"/>
+            <attribute name="apgeneratedsrcdir" default="${build.generated.sources.dir}/ap-source-output"/>
+            <sequential>
+                <echo> ===== New XSL 1.1 ===================</echo>
+                <property name="temp.includes.trans" value="@{includes}"/>
+                <property name="temp.testincludes.trans" value="@{testincludes}"/>
+                <script language="javascript">
+            var includesProp = project.getProperty("temp.includes.trans");
+            var testincludesProp = project.getProperty("temp.testincludes.trans");
+            var includesAsClass = includesProp.replace(".java", ".class");
+            includesAsClass = includesAsClass.replace(".groovy", ".class");
+            project.setProperty("includes.trans.class",includesAsClass);
+            
+            var testincludesAsClass = testincludesProp.replace(".java", ".class");
+            testincludesAsClass = testincludesAsClass.replace(".groovy", ".class");
+            project.setProperty("test.includes.trans.class",testincludesAsClass);                
+                        </script>
+                <junit showoutput="true" fork="true" dir="${work.dir}" failureproperty="tests.failed" errorproperty="tests.failed" tempdir="${build.dir}">
+                    <batchtest todir="${build.test.results.dir}">
+                        <fileset dir="${build.test.classes.dir}" includes="${includes.trans.class}" excludes="@{excludes},${excludes}">
+                            <filename name="${test.includes.trans.class}"/>
+                        </fileset>
+                    </batchtest>
+                    <classpath>
+                        <path path="${run.test.classpath}"/>
+                    </classpath>
+                    <syspropertyset>
+                        <propertyref prefix="test-sys-prop."/>
+                        <mapper from="test-sys-prop.*" to="*" type="glob"/>
+                    </syspropertyset>
+                    <formatter type="brief" usefile="false"/>
+                    <formatter type="xml"/>
+                    <jvmarg line="${endorsed.classpath.cmd.line.arg}"/>
+                    <jvmarg value="-ea"/>
+                    <jvmarg line="${run.jvmargs}"/>
+                </junit>
+            </sequential>
+        </macrodef>
+    </target>
+</project>
